@@ -38,8 +38,8 @@ public class Reachable {
         addNorth - Add street northStreets[input for width][input for height] and make it true
         width - return the width of City
         height - return the height of City
-        east -
-        north -
+        east - Returns the truth value in eastStreets[input for width][input for height]
+        north - Returns the truth value in northStreets[input for width][input for height]
      */
 
     public static boolean access(City C, int i, int j) throws IllegalArgumentException {
