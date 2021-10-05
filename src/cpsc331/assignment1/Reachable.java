@@ -42,6 +42,36 @@ public class Reachable {
         north - Returns the truth value in northStreets[input for width][input for height]
      */
 
+    /*
+    Pseudocode for access:
+    if ((i == 0) && (j == 0)) {
+        return True;
+    } else {
+        Declare R to be a boolean array i + 1 rows and j + 1 columns such that R[i][j] = False
+        for all integers s and t such that 0 <= s <= i and 0 <= t <= j
+        int s = 0;
+        while (s <= i) {
+          int t = 0;
+          while (t <= j) {
+            if (s == 0) {
+              if (t == 0) {
+                R[s][t] = True;
+              } else {
+                R[s][t] = north(s,t-1) && R[s][t-1];
+              }
+            } else if (t == 0)
+              R[s][t] = east(s-1,t) && R[s-1][t];
+            } else {
+              R[s][t] = (east(s-1,t) && R[s-1][t]) || (north(s,t-1) && R[s][t-1]);
+            }
+            t++;
+          }
+          s++;
+        }
+        return R[i][j]
+    }
+     */
+
     public static boolean access(City C, int i, int j) throws IllegalArgumentException {
 
         // To be replaced
