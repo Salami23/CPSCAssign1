@@ -33,7 +33,7 @@ public class Reachable {
 
     /*
     Functions in city:
-        City - The constructior, makes the double arrays for the City
+        City - The constructor, makes the double arrays for the City
         addEast - Add street eastStreets[input for width][input for height] and make it true
         addNorth - Add street northStreets[input for width][input for height] and make it true
         width - return the width of City
