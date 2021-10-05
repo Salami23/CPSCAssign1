@@ -10,7 +10,7 @@ package cpsc331.assignment1;
 
 // Changes from Joanne
 // Change from Feifei HI HI
-//HI HI HI HI HI HI
+//HI HI HI HI HI HI Hi
 
 public class City {
 
