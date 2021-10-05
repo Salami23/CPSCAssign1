@@ -6,6 +6,8 @@ package cpsc331.assignment1;
  *
  */
 
+//Changes to city for test
+
 public class City {
 
     // Data Fields
