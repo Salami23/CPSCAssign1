@@ -9,6 +9,7 @@ package cpsc331.assignment1;
 //Changes to city for test
 
 // Changes from Joanne
+// Change from Feifei
 
 public class City {
 
