@@ -2,6 +2,9 @@ package cpsc331.assignment1;
 
 import cpsc331.assignment1.City;
 
+import java.util.Arrays;
+import cpsc331.assignment1.City;
+
 /*
  *
  * Provides a function to decide whether a given location in a given city
@@ -10,7 +13,6 @@ import cpsc331.assignment1.City;
  */
 
 public class Reachable {
-
     /*
      *
      * Function to determine whether a given location in a given city can
@@ -44,41 +46,38 @@ public class Reachable {
 
     /*
     Pseudocode for access:
-    if ((i == 0) && (j == 0)) {
-        return True;
-    } else {
-        Declare R to be a boolean array i + 1 rows and j + 1 columns such that R[i][j] = False
-        for all integers s and t such that 0 <= s <= i and 0 <= t <= j
-        int s = 0;
-        while (s <= i) {
-          int t = 0;
-          while (t <= j) {
-            if (s == 0) {
-              if (t == 0) {
-                R[s][t] = True;
-              } else {
-                R[s][t] = north(s,t-1) && R[s][t-1];
-              }
-            } else if (t == 0)
-              R[s][t] = east(s-1,t) && R[s-1][t];
-            } else {
-              R[s][t] = (east(s-1,t) && R[s-1][t]) || (north(s,t-1) && R[s][t-1]);
-            }
-            t++;
-          }
-          s++;
-        }
-        return R[i][j]
-    }
-     */
+  */
 
     public static boolean access(City C, int i, int j) throws IllegalArgumentException {
-
-        // To be replaced
-
-        return false;
-
+        City F = new City(i, j);
+        if ((i == 0) && (j == 0)) {
+            return true;
+        } else {
+            Boolean[][] R = new Boolean[i + 1][j + 1];
+            Arrays.fill(R, Boolean.FALSE);
+            /*for all integers s and t such that 0 <= s <= i and 0 <= t <= j*/
+            int s = 0;
+            while (s <= i) {
+                int t = 0;
+                while (t <= j) {
+                    if (s == 0) {
+                        if (t == 0) {
+                            R[s][t] = true;
+                        } else {
+                            R[s][t] = F.north(s, t - 1) && R[s][t - 1];
+                        }
+                    } else if (t == 0) {
+                        R[s][t] = F.east(s - 1, t) && R[s - 1][t];
+                    } else {
+                        R[s][t] = (F.east(s - 1, t) && R[s - 1][t]) || (F.north(s, t - 1) && R[s][t - 1]);
+                    }
+                    t++;
+                }
+                s++;
+            }
+            return R[i][j];
+        }
     }
-
-
 }
+
+
