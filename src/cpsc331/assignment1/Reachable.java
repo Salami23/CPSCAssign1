@@ -67,10 +67,10 @@ public class Reachable {
                         if (t == 0) {
                             R[s][t] = true; // addNorth[s][t] \n addEast[s][t]
                         } else {
-                            R[s][t] = F.north(s, t - 1) && R[s][t - 1]; // F.north(s, t - 1) && north(s, t-1) then addnorthstreets(s,t)
+                            R[s][t] = F.north(s, t - 1) && R[s][t - 1]; // F.north(s, t - 1) then addnorthstreets(s,t)
                         }
                     } else if (t == 0) {
-                        R[s][t] = F.east(s - 1, t) && R[s - 1][t]; // F.east(s - 1, t) && east(s-1, t) then addeaststreets(s,t)
+                        R[s][t] = F.east(s - 1, t) && R[s - 1][t]; // F.east(s - 1, t) then addeaststreets(s,t)
                     } else {
                         R[s][t] = (F.east(s , t) && R[s - 1][t]) || (F.north(s, t - 1) && R[s][t - 1]);
                     }
