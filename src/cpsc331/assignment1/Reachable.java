@@ -50,11 +50,14 @@ public class Reachable {
 
     public static boolean access(City C, int i, int j) throws IllegalArgumentException {
         City F = new City(i, j);
+        if (i<0 || j<0){
+            throw new IllegalArgumentException("Value too small");
+        }
         if ((i == 0) && (j == 0)) {
             return true;
         } else {
             Boolean[][] R = new Boolean[i + 1][j + 1];
-            Arrays.fill(R, Boolean.FALSE);
+            //Arrays.fill(R, Boolean.TRUE);
             /*for all integers s and t such that 0 <= s <= i and 0 <= t <= j*/
             int s = 0;
             while (s <= i) {
@@ -69,7 +72,7 @@ public class Reachable {
                     } else if (t == 0) {
                         R[s][t] = F.east(s - 1, t) && R[s - 1][t];
                     } else {
-                        R[s][t] = (F.east(s - 1, t) && R[s - 1][t]) || (F.north(s, t - 1) && R[s][t - 1]);
+                        R[s][t] = (F.east(s , t) && R[s - 1][t]) || (F.north(s, t - 1) && R[s][t - 1]);
                     }
                     t++;
                 }
