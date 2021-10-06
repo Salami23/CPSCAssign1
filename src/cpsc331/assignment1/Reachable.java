@@ -56,7 +56,7 @@ public class Reachable {
         if ((i == 0) && (j == 0)) {
             return true;
         } else {
-            // Boolean[][] R = new Boolean[i + 1][j + 1];
+            Boolean[][] R = new Boolean[i + 1][j + 1];
             //Arrays.fill(R, Boolean.TRUE);
             /*for all integers s and t such that 0 <= s <= i and 0 <= t <= j*/
             int s = 0;
@@ -65,39 +65,20 @@ public class Reachable {
                 while (t <= j) {
                     if (s == 0) {
                         if (t == 0) {
-                            //R[s][t] = true; // addNorth[s][t] \n addEast[s][t]
-                            F.addNorth(s, t-1);
-                            F.addEast(s-1,t);
+                            R[s][t] = true;
                         } else {
-                            //R[s][t] = F.north(s, t - 1) && R[s][t - 1]; // F.north(s, t - 1) then addnorthstreets(s,t)
-                            if (F.north(s, t-1)) {
-                                F.addNorth(s,t);
-                            }
+                            R[s][t] = F.north(s, t - 1) && R[s][t - 1];
                         }
                     } else if (t == 0) {
-                        //R[s][t] = F.east(s - 1, t) && R[s - 1][t]; // F.east(s - 1, t) then addeaststreets(s,t)
-                        if (F.east(s-1,t)) {
-                            F.addEast(s,t);
-                        }
+                        R[s][t] = F.east(s - 1, t) && R[s - 1][t];
                     } else {
-                        //R[s][t] = (F.east(s , t) && R[s - 1][t]) || (F.north(s, t - 1) && R[s][t - 1]);
-                        if (F.east(s-1,t)) {
-                            F.addEast(s,t);
-                        }
-                        if (F.north(s,t-1)) {
-                            F.addNorth(s,t);
-                        }
+                        R[s][t] = (F.east(s , t) && R[s - 1][t]) || (F.north(s, t - 1) && R[s][t - 1]);
                     }
                     t++;
                 }
                 s++;
             }
-            //return R[i][j];
-            if (i >= j) {
-                return F.east(i,j);
-            } else {
-                return F.north(i,j);
-            }
+            return R[i][j];
         }
     }
 }
