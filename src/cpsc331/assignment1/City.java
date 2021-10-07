@@ -36,7 +36,6 @@ public class City {
 
                 this.cWidth = width;
                 this.cHeight = height;
-
                 this.eastStreets = new boolean[width][height + 1];
                 int i = 0;
                 while (i < width) {
