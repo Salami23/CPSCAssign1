@@ -48,37 +48,38 @@ public class Reachable {
     Pseudocode for access:
   */
 
-
     public static boolean access(City C, int i, int j) throws IllegalArgumentException {
-        City F = new City(i, j); //Creates a city F with inputs i and j as length and width
+        City F = new City(i, j);
+        if (i<0 || j<0){
+            throw new IllegalArgumentException("Value too small");
+        }
         if ((i == 0) && (j == 0)) {
             return true;
         } else {
-            // s and t are integers such that 0<=s<=i and 0<=t=<i
+            /*for all integers s and t such that 0 <= s <= i and 0 <= t <= j*/
             int s = 0;
             while (s <= i) {
                 int t = 0;
                 while (t <= j) {
                     if (s == 0) {
                         if (t == 0) {
-                            F.addNorth(s, t-1); //when s=0 and t=0, turn array position F(s, t-1) true
+                            F.addNorth(s, t-1);
                             F.addEast(s-1,t);
-                        } else { //s=0 and t>1
-                            if (F.north(s, t-1)) { //if there is a street from (s,t-1) to (s,t) then return true
-                                F.addNorth(s,t); //when s=0 and t>0, turn array position F(s-1, t) true
+                        } else {
+                            if (F.north(s, t-1)) {
+                                F.addNorth(s,t);
                             }
                         }
-
-                    } else if (t == 0) { //if s>0 and t=0
-                        if (F.east(s-1,t)) { //if there is a street from (s-1,t) to (s,t) then return true
-                            F.addEast(s,t);  //when s>0 and t=0, turn array position F(s-1, t) to true
+                    } else if (t == 0) {
+                        if (F.east(s-1,t)) {
+                            F.addEast(s,t);
                         }
-                    } else { //if s>0 and t>0
-                        if (F.east(s-1,t)) { //if there is a street from (s-1,t) to (s,t) then return true
-                            F.addEast(s,t); //when s>0 and t=0, turn array position F(s-1, t) to true
+                    } else {
+                        if (F.east(s-1,t)) {
+                            F.addEast(s,t);
                         }
-                        if (F.north(s,t-1)) { //if there is a street from (s,t-1) to (s,t) then return true
-                            F.addNorth(s,t); //when s=0 and t?0, turn array position F(s-1, t) true
+                        if (F.north(s,t-1)) {
+                            F.addNorth(s,t);
                         }
                     }
                     t++;
