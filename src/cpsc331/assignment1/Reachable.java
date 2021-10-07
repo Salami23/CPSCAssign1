@@ -1,3 +1,6 @@
+/* Joanne Millard UCID:30117800
+   Farhan Salam UCID: 30096686
+*/
 package cpsc331.assignment1;
 
 import cpsc331.assignment1.City;
@@ -32,21 +35,6 @@ public class Reachable {
      * IllegalArgumentException is thrown.
      *
      */
-
-    /*
-    Functions in city:
-        City - The constructor, makes the double arrays for the City
-        addEast - Add street eastStreets[input for width][input for height] and make it true
-        addNorth - Add street northStreets[input for width][input for height] and make it true
-        width - return the width of City
-        height - return the height of City
-        east - Returns the truth value in eastStreets[input for width][input for height]
-        north - Returns the truth value in northStreets[input for width][input for height]
-     */
-
-    /*
-    Pseudocode for access:
-  */
 
     public static boolean access(City C, int i, int j) throws IllegalArgumentException {
         City F = new City(i, j);
@@ -86,7 +74,6 @@ public class Reachable {
                 }
                 s++;
             }
-            //return R[i][j];
             if (i >= j) {
                 return F.east(i,j);
             } else {
