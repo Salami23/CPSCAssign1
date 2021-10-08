@@ -1,5 +1,17 @@
-/* Joanne Millard UCID:30117800
+/*
+   Authors:
+   Feifei Zhang UCID:
+   Joanne Millard UCID:30117800
    Farhan Salam UCID: 30096686
+   Description:
+   This program will receive a location in city F and see whether or not
+   that location is reachable from point (0, 0)
+   Citation:
+   Outerloop invariant:
+   Bound function for the outerloop:
+   Innerloop Invariant
+   Bound function for the innerloop:
+
 */
 package cpsc331.assignment1;
 
@@ -36,6 +48,7 @@ public class Reachable {
      *
      */
 
+    // 8ij + 12i + 8j + 18
     public static boolean access(City C, int i, int j) throws IllegalArgumentException {
         City F = new City(i, j);
         if ((i == 0) && (j == 0)) {
