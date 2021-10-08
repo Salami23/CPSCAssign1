@@ -8,6 +8,14 @@
    that location is reachable from point (0, 0)
    Citation:
    Outerloop invariant:
+   a)  F is an input city, and i and j are input integers
+   	   such that 0 <= i <= w and 0 <= j <= h, where w and h are
+   	   the width and height of F, respectively.
+	b) northStreets is a (variable) Boolean array with i + 1 rows and j columns and
+	   eastStreets is a (variable) Boolean array with i rows and j + 1 columns.
+	c) s is an integer variable such that 0 <= s <= i + 1.
+    d) northStreets[u][v] \/ eastSTreets[u][v] = 〖reachable〗c (u,v)
+       for all integers u and v such that 0 <= v <= j and 0 <= u <= s - 1.
    Bound function for the outerloop:
      g:(s,i)=i-s+1
    Innerloop Invariant:
@@ -18,8 +26,7 @@
 	   eastStreets is a (variable) Boolean array with i rows and j + 1 columns.
 	c) t is an integer variable such that 0 <= t <= j + 1.
     d) northStreets[u][v] \/ eastSTreets[u][v] = 〖reachable〗c (u,v)
-       for all integers u and v such that 0 <= u <= i and 0 <= v <= t -1.
-
+       for all integers u and v such that 0 <= u <= i and 0 <= v <= t - 1.
    Bound function for the innerloop:
      f:(t,j)=j-t+1
 
