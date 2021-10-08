@@ -11,12 +11,14 @@
    Bound function for the outerloop:
      g:(s,i)=i-s+1
    Innerloop Invariant:
-   	a) C is an input city, and i and j are input integers
+   	a) F is an input city, and i and j are input integers
    	   such that 0 <= i <= w and 0 <= j <= h, where w and h are
-   	   the width and height of C, respectively.
-	b) R is a (variable) Boolean array with i + 1 rows and j + 1 columns.
+   	   the width and height of F, respectively.
+	b) northStreets is a (variable) Boolean array with i + 1 rows and j columns and
+	   eastStreets is a (variable) Boolean array with i rows and j + 1 columns.
 	c) t is an integer variable such that 0 <= t <= j + 1.
-    d) R[u][v] = 〖reachable〗_c (u,v) for all integers u and v such that 0 <= u <= i and 0 <= v <= t -1
+    d) northStreets[u][v] \/ eastSTreets[u][v] = 〖reachable〗c (u,v)
+       for all integers u and v such that 0 <= u <= i and 0 <= v <= t -1.
 
    Bound function for the innerloop:
      f:(t,j)=j-t+1
