@@ -86,25 +86,32 @@ public class Reachable {
                     if (s == 0) {
                         if (t == 0) {
                             F.addNorth(s, t);
-                            // Set northStreets[s][i] to true.
+                            // Set northStreets[0][0] to true.
                             F.addEast(s,t);
-                            // Set eastStreats[s][i] to true.
+                            // Set eastStreats[0][0] to true.
                         } else {
                             if (F.north(s, t-1)) {
                                 F.addNorth(s,t);
-                                //
+                                /* Sets northStreets[0][j] to true if there's a
+                                   street between northStreets[0][j-1] and northStreets[0][j] */
                             }
                         }
                     } else if (t == 0) {
                         if (F.east(s-1,t)) {
                             F.addEast(s,t);
+                            /* Sets eastStreets[i][0] to true if there's a
+                               street between eastStreets[i-1][0] and eastStreets[i][0] */
                         }
                     } else {
                         if (F.east(s-1,t)) {
                             F.addEast(s,t);
+                            /* Sets eastStreets[i][j] to true if there's a
+                               street between eastStreets[i-1][j] and eastStreets[i][j] */
                         }
                         if (F.north(s,t-1)) {
                             F.addNorth(s,t);
+                            /* Sets northStreets[i][j] to true if there's a
+                               street between northStreets[i][j-1] and northStreets[i][j] */
                         }
                     }
                     t++;
@@ -113,8 +120,10 @@ public class Reachable {
             }
             if (i >= j) {
                 return F.east(i,j);
+                // If there are more rows than columns return F.east(i,j)
             } else {
                 return F.north(i,j);
+                // If there are more columns than rows return F.north(i,j)
             }
         }
     }
