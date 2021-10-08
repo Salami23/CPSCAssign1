@@ -88,7 +88,7 @@ public class Reachable {
                             F.addNorth(s, t);
                             // Set northStreets[0][0] to true.
                             F.addEast(s,t);
-                            // Set eastStreats[0][0] to true.
+                            // Set eastStreets[0][0] to true.
                         } else {
                             if (F.north(s, t-1)) {
                                 F.addNorth(s,t);
