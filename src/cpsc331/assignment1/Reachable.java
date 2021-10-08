@@ -14,7 +14,7 @@
 	b) northStreets is a (variable) Boolean array with i + 1 rows and j columns and
 	   eastStreets is a (variable) Boolean array with i rows and j + 1 columns.
 	c) s is an integer variable such that 0 <= s <= i + 1.
-    d) northStreets[u][v] \/ eastSTreets[u][v] = 〖reachable〗c (u,v)
+    d) northStreets[u][v] || eastStreets[u][v] = 〖access〗c (u,v)
        for all integers u and v such that 0 <= v <= j and 0 <= u <= s - 1.
    Bound function for the outerloop:
      g:(s,i)=i-s+1
@@ -25,7 +25,7 @@
 	b) northStreets is a (variable) Boolean array with i + 1 rows and j columns and
 	   eastStreets is a (variable) Boolean array with i rows and j + 1 columns.
 	c) t is an integer variable such that 0 <= t <= j + 1.
-    d) northStreets[u][v] \/ eastSTreets[u][v] = 〖reachable〗c (u,v)
+    d) northStreets[u][v] || eastStreets[u][v] = 〖access〗c (u,v)
        for all integers u and v such that 0 <= u <= i and 0 <= v <= t - 1.
    Bound function for the innerloop:
      f:(t,j)=j-t+1
@@ -66,11 +66,17 @@ public class Reachable {
      *
      */
 
-    // 8ij + 12i + 8j + 18
+    // Worst case: 8ij + 12i + 8j + 18
     public static boolean access(City C, int i, int j) throws IllegalArgumentException {
+        // Two nonnegative integers, i and j, and class City C has been given as input
         City F = new City(i, j);
+        /* northStreets is a boolean array with i + 1 rows and j columns
+           and eastStreets is a boolean array with i rows and j + 1 columns
+           such that northStreets[s][t] and eastStreets[s][t] such that
+           0 <= s <= i and 0 <= t <= j*/
         if ((i == 0) && (j == 0)) {
             return true;
+            /* The function access returns the boolean true as output */
         } else {
             /*for all integers s and t such that 0 <= s <= i and 0 <= t <= j*/
             int s = 0;
@@ -79,11 +85,14 @@ public class Reachable {
                 while (t <= j) {
                     if (s == 0) {
                         if (t == 0) {
-                            F.addNorth(s, t-1);
-                            F.addEast(s-1,t);
+                            F.addNorth(s, t);
+                            // Set northStreets[s][i] to true.
+                            F.addEast(s,t);
+                            // Set eastStreats[s][i] to true.
                         } else {
                             if (F.north(s, t-1)) {
                                 F.addNorth(s,t);
+                                //
                             }
                         }
                     } else if (t == 0) {
