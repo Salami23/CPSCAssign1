@@ -1,3 +1,6 @@
+/* Joanne Millard UCID:30117800
+   Farhan Salam UCID: 30096686
+*/
 package cpsc331.assignment1;
 
 import cpsc331.assignment1.City;
@@ -33,62 +36,38 @@ public class Reachable {
      *
      */
 
-    /*
-    Functions in city:
-        City - The constructor, makes the double arrays for the City
-        addEast - Add street eastStreets[input for width][input for height] and make it true
-        addNorth - Add street northStreets[input for width][input for height] and make it true
-        width - return the width of City
-        height - return the height of City
-        east - Returns the truth value in eastStreets[input for width][input for height]
-        north - Returns the truth value in northStreets[input for width][input for height]
-     */
-
-    /*
-    Pseudocode for access:
-  */
-
     public static boolean access(City C, int i, int j) throws IllegalArgumentException {
-        City F = new City(i, j);
+        if ((0 > i) || (i > C.width())) {
+            throw new IllegalArgumentException("input must be between 0 and width");
+        }
+        if ((0 > j) || (j > C.height())) {
+            throw new IllegalArgumentException("input must be between 0 and height");
+        }
         if ((i == 0) && (j == 0)) {
             return true;
         } else {
-            /*for all integers s and t such that 0 <= s <= i and 0 <= t <= j*/
+            // s and t are integers such that 0<=s<=i and 0<=t=<i
+            Boolean[][] R = new Boolean[i + 1][j + 1];
             int s = 0;
             while (s <= i) {
                 int t = 0;
                 while (t <= j) {
                     if (s == 0) {
                         if (t == 0) {
-                            F.addNorth(s, t-1);
-                            F.addEast(s-1,t);
+                            R[s][t] = true;
                         } else {
-                            if (F.north(s, t-1)) {
-                                F.addNorth(s,t);
-                            }
+                            R[s][t] = C.north(s, t = 1) && R[s][t - 1];
                         }
                     } else if (t == 0) {
-                        if (F.east(s-1,t)) {
-                            F.addEast(s,t);
-                        }
+                        R[s][t] = C.east(s - 1, t) && R[s - 1][t];
                     } else {
-                        if (F.east(s-1,t)) {
-                            F.addEast(s,t);
-                        }
-                        if (F.north(s,t-1)) {
-                            F.addNorth(s,t);
-                        }
+                        R[s][t] = (C.east(s - 1, t) && R[s - 1][t]) && (C.north(s, t = 1) && R[s][t - 1]);
                     }
                     t++;
                 }
                 s++;
             }
-            //return R[i][j];
-            if (i >= j) {
-                return F.east(i,j);
-            } else {
-                return F.north(i,j);
-            }
+            return R[i][j];
         }
     }
 }
