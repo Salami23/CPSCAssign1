@@ -1,6 +1,6 @@
 /*
 Authors:
-   Feifei Zhang UCID:
+   Feifei Zhang UCID: 30071476
    Joanne Millard UCID:30117800
    Farhan Salam UCID: 30096686
    Description:
@@ -112,14 +112,14 @@ public class Reachable {
                         }
                     } else if (t == 0) {
                          // s and t are nonnegative integer variables such that s > 0 and t = 0.
-                        R[s][t] = C.east(s - 1, t) && R[s - 1][t];
+                        R[s][t] = (C.east(s - 1, t) && R[s - 1][t]);
                         /*
                            R[s][t] is set to True only if there exists
                            a street from R[s - 1][t] to R[s][t] in City C.
                          */
                     } else {
                         // s and t are nonnegative integer variables greater than 0.
-                        R[s][t] = (C.east(s - 1, t) && R[s - 1][t]) && (C.north(s, t - 1) && R[s][t - 1]);
+                        R[s][t] = ((C.east(s - 1, t) && R[s - 1][t]) || (C.north(s, t - 1) && R[s][t - 1]));
                         /*
                            R[s][t] is set to True only if there exists
                            a street from R[s][t - 1] to R[s][t]
