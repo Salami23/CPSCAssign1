@@ -8,17 +8,10 @@ Authors:
    a given location is reachable from point (0,0) by only travelling north or east.
 
    Citation:
--	Lecture #1: Introduction to the Course and Mathematics Review
--	Tutorial #1: Review of Mathematical Induction
--	Lecture #2: Introduction to the Correctness of Algorithms I – Correctness of Simple Algorithms
--	Tutorial #3: Introduction to the Correctness of Algorithms I
 -	Lecture #3: Introduction to the Correctness of Algorithms II – Correctness of Simple Algorithms with a While Loop
 -	Tutorial #4: Introduction to the Correctness of Algorithms II
 -	Lecture #4: Analyzing the Efficiency of Algorithms
 -	Tutorial #5: Analyzing the Efficiency of Algorithms
--	Lan Pac (https://math.stackexchange.com/users/80524/lan-pac), Less than or equal sign,
-    URL (version: 2014-02-17): https://math.stackexchange.com/q/679451
-
 
    Outer loop invariant:
    a)  C is an input city, and i and j are input integers
