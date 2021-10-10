@@ -8,7 +8,17 @@ Authors:
    a given location is reachable from point (0,0) by only travelling north or east.
 
    Citation:
-   Lectures 1-4.
+-	Lecture #1: Introduction to the Course and Mathematics Review
+-	Tutorial #1: Review of Mathematical Induction
+-	Lecture #2: Introduction to the Correctness of Algorithms I – Correctness of Simple Algorithms
+-	Tutorial #3: Introduction to the Correctness of Algorithms I
+-	Lecture #3: Introduction to the Correctness of Algorithms II – Correctness of Simple Algorithms with a While Loop
+-	Tutorial #4: Introduction to the Correctness of Algorithms II
+-	Lecture #4: Analyzing the Efficiency of Algorithms
+-	Tutorial #5: Analyzing the Efficiency of Algorithms
+-	Lan Pac (https://math.stackexchange.com/users/80524/lan-pac), Less than or equal sign,
+    URL (version: 2014-02-17): https://math.stackexchange.com/q/679451
+
 
    Outer loop invariant:
    a)  C is an input city, and i and j are input integers
@@ -73,14 +83,17 @@ public class Reachable {
     public static boolean access(City C, int i, int j) throws IllegalArgumentException {
         // Two nonnegative integers, i and j, and class City C has been given as input.
         if ((0 > i) || (i > C.width())) {
-            //
+            // i is a negative integer input or it is greater than the width of City C.
             throw new IllegalArgumentException("input must be between 0 and width");
+            // An IllegalArgumentException is thrown.
         }
         if ((0 > j) || (j > C.height())) {
+            // j is a negative integer input or it is greater than the height of City C.
             throw new IllegalArgumentException("input must be between 0 and height");
+            // An IllegalArgumentException is thrown.
         }
         if ((i == 0) && (j == 0)) {
-            //i and j are nonnegative integer inputs such that i and j equal 0.
+            // i and j are nonnegative integer inputs such that i and j equal 0.
             return true;
         } else {
             // s and t are integer variables such that 0<=s<=i and 0<=t=<i
